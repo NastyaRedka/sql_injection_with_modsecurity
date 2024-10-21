@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Showcase</title>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form action="handle_login.php" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="method">Select SQL Method</label>
+                <select id="method" name="method" required>
+                    <option value="vulnerable">Vulnerable SQL</option>
+                    <option value="parameterized">Parameterized SQL</option>
+                    <option value="escaping">Data Escaping</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+        <?php
+        if (isset($_GET['error'])) {
+            echo "<div class='error-message'>Invalid username or password</div>";
+        }
+        ?>
+    </div>
+
+</body>
+</html>
